@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %} 
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;400&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="containerform">
+  <div class="twocontainerfirst">
+    <div class="login-container">
+      <div class="login-form">
+        <div class="form-header">
+          <img src="https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/LogoBI.png" alt="Register Icon" class="login-icon" />
+          <h1 class="login-title">REGISTRAR</h1>
+        </div>
+        <p class="login-subtitle">Crie sua conta para acessar o ProFuturo BI</p>
+
+        <form method="POST" action="">
+          {% if message is not None %}
+          <div class="alert">
+            {{ message.text }}
+          </div>
+          {% endif %}
+
+          {% csrf_token %}
+          
+          <div class="form-group">
+            <label for="id_nome">Nome</label>
+            <input type="text" name="nome" id="id_nome" placeholder="Digite seu Nome" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="id_nomedeusuario">Nome de Usuário</label>
+            <input type="text" name="nomedeusuario" id="id_nomedeusuario" placeholder="Digite seu Nome de Usuário" required>
+          </div>
+
+          <div class="form-group">
+            <label for="id_email">E-mail</label>
+            <input type="email" name="email" id="id_email" placeholder="Digite seu E-mail" required>
+          </div>
+
+          <div class="form-group">
+            <label for="id_telefone">Telefone</label>
+            <input type="text" name="telefone" id="id_telefone" placeholder="Digite seu Telefone" required>
+          </div>
+
+          <div class="form-group password-container">
+            <label for="id_password">Senha</label>
+            <input type="password" name="password" id="id_password" placeholder="Digite sua Senha" required>
+            <img src="https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/invisible-1.png" alt="Ver Senha" class="password-eye" id="password-eye">
+          </div>
+
+          <div class="form-group password-container">
+            <label for="id_password_confirm">Confirmar Senha</label>
+            <input type="password" name="password_confirm" id="id_password_confirm" placeholder="Confirme sua Senha" required>
+            <img src="https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/invisible-1.png" alt="Ver Senha" class="password-eye" id="password-eye_confirm">
+          </div>
+          
+          <div class="form-group toggle-group">
+            <span class="toggle-text">É Staff?</span>
+            <label class="toggle-label">
+              <input type="checkbox" name="is_staff" id="id_is_staff" class="toggle-checkbox">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>          
+
+          <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="twocontainer mosaico" id="mosaico-register">
+    <img src="http://csa.cnat.ifrn.edu.br/wp-content/uploads/2025/03/mosaico-1.png" alt="Mosaico" class="mosaico-bg">
+  </div>
+</div>
+
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+      const passwordInput = document.querySelector('#id_password');
+      const passwordConfirmInput = document.querySelector('#id_password_confirm');
+      const passwordEye = document.querySelector('#password-eye');
+      const passwordEyeConf = document.querySelector('#password-eye_confirm');
+      
+      if (passwordEye) {
+        passwordEye.addEventListener('click', function() {
+          const type = passwordInput.type === 'password' ? 'text' : 'password';
+          passwordInput.type = type;
+          
+          // Alternar o ícone de olho (visível e invisível)
+          if (type === 'password') {
+            passwordEye.src = 'https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/invisible-1.png';
+          } else {
+            passwordEye.src = 'https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/visible.png';
+          }
+        });
+      }
+      if (passwordEyeConf) {
+        passwordEyeConf.addEventListener('click', function() {
+          const type = passwordConfirmInput.type === 'password' ? 'text' : 'password';
+          passwordConfirmInput.type = type;
+          
+          // Alternar o ícone de olho (visível e invisível)
+          if (type === 'password') {
+            passwordEyeConf.src = 'https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/invisible-1.png';
+          } else {
+            passwordEyeConf.src = 'https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/visible.png';
+          }
+        });
+      }
+    });    
+      </script>
+{% endblock %}

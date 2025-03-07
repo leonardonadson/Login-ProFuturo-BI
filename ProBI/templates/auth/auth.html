@@ -1,41 +1,75 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}{{ title }}{% endblock %}  {# 🔥 Fechando corretamente #}
+{% block title %}{{ title }}{% endblock %} 
 
 {% block styles %}
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;400&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div id="content">
-  <div class="container-fluid">
-    <div class="row">
-      <form
-        class="col-md-4 col-lg-4 offset-md-4 offset-lg-4"
-        method="POST"
-        action=""
-      >
-        <h3 class="text-center">{{title}}</h3>
-        {% if message is not None %}
-        <div class="alert alert-{{ message.type }}">{{ message.text }}</div>
-        {% endif %} {% csrf_token %} {% for f in form %}
-        <div class="form-group">
-          {{ f.label }} {{ f }} {% for error in f.errors %}
-          <div class="invalid-feedback" style="display: initial">
-            {{ error }}
-          </div>
-          {% endfor %}
+<div class="containerform">
+  <div class="twocontainerfirst">
+    <div class="login-container">
+      <div class="login-form">
+        <div class="form-header">
+          <img src="https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/LogoBI.png" alt="Login Icon" class="login-icon" />
+          <h1 class="login-title">LOGIN</h1>
         </div>
-        {% endfor %}
-        <a
-          href="{{link_href}}"
-          style="display: block; text-align: center; margin-bottom: 20px"
-          >{{link_text}}</a
-        >
-        <button type="submit" class="btn btn-primary">{{button_text}}</button>
-      </form>
+        <p class="login-subtitle">Acesse os dados do ProFuturo BI</p>
+
+        <form method="POST" action="">
+          <h3 class="form-title"></h3>
+          {% if message is not None %}
+          <div class="alert">
+          {{ message.text }}
+          </div>
+          {% endif %}
+
+          {% csrf_token %}
+          
+          <div class="form-group">
+            <label for="id_username">Nome de Usuário</label>
+            <input type="text" name="username" id="id_username" placeholder="Digite seu Nome de Usuário" required>
+          </div>
+
+          <div class="form-group password-container">
+            <label for="id_password">Senha</label>
+            <input type="password" name="password" id="id_password" placeholder="Digite sua Senha" required>
+            <img src="https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/invisible-1.png" alt="Ver Senha" class="password-eye" id="password-eye">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+        </form>
+      </div>
     </div>
   </div>
+
+  <div class="twocontainer mosaico">
+    <img src="http://csa.cnat.ifrn.edu.br/wp-content/uploads/2025/03/mosaico-1.png" alt="Mosaico" class="mosaico-bg">
+  </div>
 </div>
+
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+      const passwordInput = document.querySelector('#id_password');
+      const passwordEye = document.querySelector('#password-eye');
+      
+      if (passwordEye) {
+        passwordEye.addEventListener('click', function() {
+          const type = passwordInput.type === 'password' ? 'text' : 'password';
+          passwordInput.type = type;
+          
+          // Alternar o ícone de olho (visível e invisível)
+          if (type === 'password') {
+            passwordEye.src = 'https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/invisible-1.png'; // Ícone de olho fechado
+          } else {
+            passwordEye.src = 'https://profuturo.ifrn.edu.br/wp-content/uploads/2025/03/visible.png'; // Ícone de olho aberto
+          }
+        });
+      }
+    });    
+</script>
 {% endblock %}

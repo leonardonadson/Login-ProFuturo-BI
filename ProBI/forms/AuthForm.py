@@ -1,10 +1,24 @@
 from django import forms
+from ProBI.models import Usuario
 
 class LoginForm(forms.Form):
-    username = forms.CharField(required=True, widget=forms.TextInput (attrs={'class': 'form-control'}))
-    password = forms.CharField(max_length=32, widget=forms.PasswordInput(attrs={'class': 'form-control'}), required=True)
+    username = forms.CharField(label="E-mail ou Nome de Usuário")
+    password = forms.CharField(widget=forms.PasswordInput, label="Senha")
 
-class RegisterForm(forms.Form):
-    username = forms.CharField(required=True, widget=forms.TextInput( attrs={'class': 'form-control'}))
-    email = forms.CharField(required=True, widget=forms.EmailInput( attrs={'class': 'form-control'}))
-    password = forms.CharField(max_length=32, widget=forms.PasswordInput( attrs={'class': 'form-control'}), required=True)
+class RegisterForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, label="Senha")
+    password_confirm = forms.CharField(widget=forms.PasswordInput, label="Confirmar Senha")
+
+    class Meta:
+        model = Usuario
+        fields = ['nome', 'nomedeusuario', 'email', 'telefone', 'password', 'is_staff']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        password_confirm = cleaned_data.get("password_confirm")
+
+        if password and password_confirm and password != password_confirm:
+            self.add_error('password_confirm', "As senhas não coincidem.")
+
+        return cleaned_data

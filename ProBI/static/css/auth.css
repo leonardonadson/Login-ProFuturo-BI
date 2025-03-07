@@ -1,0 +1,298 @@
+body{
+  background-color: #FFFFFF;
+}
+
+/* Estilo do botão "Entrar" */
+button.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 2em 0;
+  background-color: #18325C;
+  color: #BFD0EB;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 21px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button.btn-primary:hover {
+  background-color: #3657C3;
+}
+
+/* Ajuste do placeholder */
+input::placeholder {
+  color: #7291C4;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+}
+
+/* Correção no título e subtítulo */
+.form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-bottom: 20px;
+}
+
+.login-icon {
+  width: 50px; /* Aumentei o tamanho do ícone */
+  height: 50px;
+}
+
+.login-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 47px;
+  color: #18325C;
+  margin: 0;
+}
+
+.login-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #3657C3;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Ajuste no ícone de olho */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  padding-right: 40px; /* Espaço para o ícone */
+}
+
+.password-eye {
+  position: absolute;
+  right: 10px;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+
+
+/* Estilo da mensagem de erro personalizada */
+.alert {
+  font-family: 'Poppins', sans-serif;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  background-color: #d7daf8;
+  color: #18325C;
+  border: 1px solid #c8c6f5;
+}
+
+/* Estilo de foco no campo de entrada */
+input:focus {
+  border-color: #18325C;
+  outline: none;
+}
+  
+.login-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0 2em;
+}
+
+:root{
+  --margin: 3em;
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 30px;
+  margin: var(--margin) 0;
+  border-radius: 10px;
+  box-shadow: 0 8px 76px -24px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  min-width: 400px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #18325C;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  border: 2px solid #3657C3;
+  border-radius: 8px;
+  background-color: #E9EEFF;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #18325C;
+  outline: none;
+}
+
+.link-text {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #3657C3;
+  text-decoration: none;
+}
+
+.link-text:hover {
+  text-decoration: underline;
+}
+
+.mosaico {
+  position: relative;
+  background-color: #3657C3;
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.mosaico#mosaico-register{
+min-height: 100vh;
+height: calc(1013px + (var(--margin)*2));
+}
+
+.mosaico-bg {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.containerform{
+  margin: 0 auto;
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 0;
+}
+
+
+.twocontainer{
+  width: 50%;
+}
+
+.twocontainerfirst{
+  width: 100%;
+  display: flex;
+  max-width: 570px;
+  margin: 0 0 0 auto;
+}
+
+
+@media  (max-width: 1130px) {
+  .containerform{
+      margin: 0;
+  }
+  .twocontainerfirst{
+      width: 50%;
+  }
+  .twocontainer{
+      width: 50%;
+  }
+}
+
+@media (max-width: 900px) {
+  .mosaico{
+      display: none;
+  }
+  .twocontainerfirst{
+      width: 100%;
+      justify-content: center;
+      margin: 0 auto;
+  }
+}
+
+/* Container do toggle */
+.toggle-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Esconde o checkbox padrão */
+.toggle-checkbox {
+  display: none;
+}
+
+/* Estiliza o botão de alternância */
+.toggle-label {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  background: #E9EEFF; /* Azul claro */
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+/* Círculo deslizante */
+.toggle-slider {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Quando ativado */
+.toggle-checkbox:checked + .toggle-slider {
+  transform: translate(25px, -50%);
+  background: #18325C;
+}
+
+/* Muda a cor do botão ao ativar */
+.toggle-checkbox:checked + .toggle-label {
+  background: #18325C; /* Azul escuro */
+}
+
+/* Texto ao lado do switch */
+.toggle-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #18325C;
+  font-family: 'Poppins', sans-serif;
+}
+
